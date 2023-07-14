@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@if (auth()->user()->name=='admin')
 <a class="btn btn-success mb-5" href="/tambah-motor"><i class="fa-solid fa-pen-to-square"></i> tambah</a>
+@endif
 
 <table style="border-collapse: collapse; width: 100%;">
   <thead style="border-bottom: 1px solid #ddd;">
@@ -26,7 +28,9 @@
         <td>{{ $mtr->sku }}</td>
         <td>{{ $mtr->variant->nama_variasi }}</td>
         <td><a class="btn btn-warning btn-sm" href="/edit/{{ $mtr->id }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-        <a class="btn btn-danger btn-sm" href="delete/{{ $mtr->id }}" onclick="return confirm('Apakah yakin untuk dihapus?')"><i class="fa-sharp fa-solid fa-trash"></i> Delete</a></td>
+          @if (auth()->user()->name=='admin')
+          <a class="btn btn-danger btn-sm" href="delete/{{ $mtr->id }}" onclick="return confirm('Apakah yakin untuk dihapus?')"><i class="fa-sharp fa-solid fa-trash"></i> Delete</a></td>
+          @endif
     </tr>
     @empty
     <tr>

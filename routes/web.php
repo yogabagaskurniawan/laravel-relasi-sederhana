@@ -22,11 +22,15 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/motors', 'MotorController@index');
-Route::get('/tambah-motor', 'MotorController@tambah');
-Route::post('/proses-tambah', 'MotorController@proses_tambah');
-Route::get('/edit/{id}', 'MotorController@edit');
-Route::post('/proses-update', 'MotorController@proses_update');
-Route::get('/delete/{id}', 'MotorController@destroy');
+Route::get('/motors', 'MotorController@index')->middleware('auth');
 
-Route::get('/show', 'MotorController@show_user');
+Route::group(['middleware' => ['auth', 'cekName:admin']], function () {
+    Route::get('/tambah-motor', 'MotorController@tambah');
+    Route::post('/proses-tambah', 'MotorController@proses_tambah');
+    Route::get('/delete/{id}', 'MotorController@destroy');
+});
+
+Route::get('/edit/{id}', 'MotorController@edit')->middleware('auth');
+Route::post('/proses-update', 'MotorController@proses_update')->middleware('auth');
+
+Route::get('/show', 'MotorController@show_user')->middleware('auth');
