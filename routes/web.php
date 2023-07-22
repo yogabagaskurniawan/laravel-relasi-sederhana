@@ -33,4 +33,12 @@ Route::group(['middleware' => ['auth', 'cekName:admin']], function () {
 Route::get('/edit/{id}', 'MotorController@edit')->middleware('auth');
 Route::post('/proses-update', 'MotorController@proses_update')->middleware('auth');
 
+// variasi
+Route::get('/motor/{id}', 'MotorController@detailMotor')->middleware('auth');
+Route::get('/tambah-variasi/{id}', 'MotorController@tambahVariasi')->middleware('auth');
+Route::post('/proses-tambah-variasi', 'MotorController@proses_tambah_variasi')->middleware('auth');
+Route::get('/delete-variasi/{id}', 'MotorController@deleteVariasi')->middleware('auth');
+Route::get('/edit-variasi/{id}', 'MotorController@editVariasi')->middleware('auth');
+Route::put('/proses-update-variasi/{id}', 'MotorController@proses_update_variasi')->middleware('auth');
+
 Route::get('/show', 'MotorController@show_user')->middleware('auth');

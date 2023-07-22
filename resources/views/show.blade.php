@@ -28,7 +28,13 @@
                 <td>{{ $motor->nama }}</td>
                 <td>{{ $motor->warna }}</td>
                 <td>{{ $motor->sku }}</td>
-                <td>{{ $motor->variant->nama_variasi }}</td>
+                <td>
+                  @forelse ( $motor->variant as $variant)
+                  {{ $variant->nama_variasi }}
+                  @empty
+                  Not record
+                  @endforelse 
+                </td>
             </tr>
             @empty
             <tr>

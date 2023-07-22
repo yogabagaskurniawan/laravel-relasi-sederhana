@@ -17,6 +17,6 @@ class Motor extends Model
     
     public function variant()
     {
-        return $this->hasOne(Variant::class, 'motor_id', 'id');
+        return $this->hasMany(Variant::class, 'motor_id', 'id');
     }
 }

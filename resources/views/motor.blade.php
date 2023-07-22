@@ -23,10 +23,16 @@
     @forelse ($daftarMotor as $mtr)
     <tr>
         <td>{{ $no++ }}</td>
-        <td>{{ $mtr->nama }}</td>
+        <td><a href="/motor/{{ $mtr->id }}">{{ $mtr->nama }}</a> </td>
         <td>{{ $mtr->warna }}</td>
         <td>{{ $mtr->sku }}</td>
-        <td>{{ $mtr->variant->nama_variasi }}</td>
+        <td>
+          @forelse ( $mtr->variant as $variant)
+          {{ $variant->nama_variasi }}
+          @empty
+          Not record
+          @endforelse 
+        </td>
         <td><a class="btn btn-warning btn-sm" href="/edit/{{ $mtr->id }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
           @if (auth()->user()->name=='admin')
           <a class="btn btn-danger btn-sm" href="delete/{{ $mtr->id }}" onclick="return confirm('Apakah yakin untuk dihapus?')"><i class="fa-sharp fa-solid fa-trash"></i> Delete</a></td>
