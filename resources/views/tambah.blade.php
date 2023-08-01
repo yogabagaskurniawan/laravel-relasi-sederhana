@@ -30,7 +30,7 @@
         </span>
       @enderror
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
       <label for="variasi" class="form-label">Variasi</label>
       <input type="text" class="form-control form-control-rounded  @error('variasi') is-invalid @enderror" name="variasi" id="variasi" placeholder="Silahkan diisi..">        
       @error('variasi')
@@ -38,7 +38,7 @@
           <strong>{{ $message }}</strong>
         </span>
       @enderror
-    </div>
+    </div> --}}
     <div class="form-group">
       <button type="submit" class="btn btn-primary mt-4">Tambah</button>
     </div>

@@ -47,10 +47,10 @@ class MotorController extends Controller
 
         $newMotor = Motor::create($data);
 
-        $variasi = new Variant();
-        $variasi->motor_id = $newMotor->id;
-        $variasi->nama_variasi = $request->variasi;
-        $variasi->save();
+        // $variasi = new Variant();
+        // $variasi->motor_id = $newMotor->id;
+        // $variasi->nama_variasi = $request->variasi;
+        // $variasi->save();
         
     
         return redirect('/motors');
@@ -85,11 +85,11 @@ class MotorController extends Controller
 
         Motor::where('id', $request->id)->update($data);
 
-        $variasi = Variant::where('motor_id', $request->id)->first();
-        if ($variasi) {
-            $variasi->nama_variasi = $request->variasi;
-            $variasi->save();
-        }
+        // $variasi = Variant::where('motor_id', $request->id)->first();
+        // if ($variasi) {
+        //     $variasi->nama_variasi = $request->variasi;
+        //     $variasi->save();
+        // }
 
         return redirect('/motors');
     }
